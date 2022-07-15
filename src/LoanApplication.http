@@ -1,0 +1,78 @@
+﻿### Create loan application
+
+POST https://localhost:5001/loan-application
+Content-Type: application/json
+
+{
+    "customerNationalIdentifier": "22222222222",
+    "customerName": {
+        "first": "Lauri",
+        "last": "Miller"
+    },
+    "customerBirthdate": "1982-07-12",
+    "customerMonthlyIncome": 15500,
+    "customerAddress": {
+        "country": "PL",
+        "zipCode": "00-001",
+        "city": "Warsaw",
+        "street": "Zielona 6"
+    },
+    "propertyValue": 400000,
+    "propertyAddress": {
+        "country": "CA ",
+        "zipCode": "95-118",
+        "city": "San Jose",
+        "street": "2201 Sycamore Street"
+    },
+    "loanAmount": 200000,
+    "loanNumberOfYears": 20,
+    "interestRate": 1
+}
+
+### Invalid loan application
+
+POST https://localhost:5001/loan-application
+Content-Type: application/json
+
+{
+    "customerNationalIdentifier": "-",
+    "customerName": {
+        "first": "",
+        "last": ""
+    },
+    "customerLastName": "",
+    "customerBirthdate": "1982-07-12",
+    "customerMonthlyIncome": -1,
+    "customerAddress": {
+        "country": "",
+        "zipCode": "",
+        "city": "",
+        "street": ""
+    },
+    "propertyValue": -1,
+    "propertyAddress": {
+        "country": " ",
+        "zipCode": "",
+        "city": "",
+        "street": ""
+    },
+    "loanAmount": -1,
+    "loanNumberOfYears": -1,
+    "interestRate": -1
+}
+
+### Get loan application
+
+GET https://localhost:5001/loan-application/00000000-0000-0000-0000-000000000000
+
+### Evaluate loan application
+
+PUT https://localhost:5001/loan-application/evaluate/00000000-0000-0000-0000-000000000000
+
+### Accept loan application
+
+PUT https://localhost:5001/loan-application/accept/00000000-0000-0000-0000-000000000000
+
+### Reject loan application
+
+PUT https://localhost:5001/loan-application/reject/00000000-0000-0000-0000-000000000000
